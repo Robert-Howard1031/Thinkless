@@ -19,7 +19,7 @@ export default function Home() {
           in seconds.
         </h1>
         <p className='mt-5 max-w-prose text-zinc-700 sm:text-lg'>
-          Thinkless allows you to have conversations with any
+        Thinkless allows you to have conversations with any
           PDF document. Simply upload your file and start
           asking questions right away.
         </p>

@@ -50,7 +50,7 @@ export const POST = async (req: NextRequest) => {
   })
 
   const pinecone = await getPineconeClient()
-  const pineconeIndex = pinecone.Index('thinkless')
+  const pineconeIndex = pinecone.Index('thinklessproject')
 
   const vectorStore = await PineconeStore.fromExistingIndex(
     embeddings,
@@ -83,7 +83,7 @@ export const POST = async (req: NextRequest) => {
   }))
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-4o',
     temperature: 0,
     stream: true,
     messages: [

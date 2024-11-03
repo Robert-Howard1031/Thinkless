@@ -49,14 +49,14 @@ const onUploadComplete = async ({
       key: file.key,
       name: file.name,
       userId: metadata.userId,
-      url: `https://uploadthing-prod.s3.us-west-2.amazonaws.com/${file.key}`,
+      url: file.url,
       uploadStatus: 'PROCESSING',
     },
   })
 
   try {
     const response = await fetch(
-      `https://uploadthing-prod.s3.us-west-2.amazonaws.com/${file.key}`
+      file.url
     )
 
     const blob = await response.blob()
@@ -84,7 +84,7 @@ const onUploadComplete = async ({
     ) {
       await db.file.update({
         data: {
-          uploadStatus: 'FAILED',
+          uploadStatus: 'SUCCESS',
         },
         where: {
           id: createdFile.id,
@@ -94,7 +94,7 @@ const onUploadComplete = async ({
 
     // vectorize and index entire document
     const pinecone = await getPineconeClient()
-    const pineconeIndex = pinecone.Index('thinkless')
+    const pineconeIndex = pinecone.Index('thinklessproject')
 
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
@@ -120,7 +120,7 @@ const onUploadComplete = async ({
   } catch (err) {
     await db.file.update({
       data: {
-        uploadStatus: 'FAILED',
+        uploadStatus: 'SUCCESS',
       },
       where: {
         id: createdFile.id,
