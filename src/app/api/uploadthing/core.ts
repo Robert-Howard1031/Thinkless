@@ -94,7 +94,7 @@ const onUploadComplete = async ({
 
     // vectorize and index entire document
     const pinecone = await getPineconeClient()
-    const pineconeIndex = pinecone.Index('thinklessproject')
+    const pineconeIndex = pinecone.Index("thinkless")
 
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,

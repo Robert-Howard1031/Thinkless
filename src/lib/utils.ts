@@ -16,7 +16,7 @@ export function absoluteUrl(path: string) {
 }
 
 export function constructMetadata({
-  title = "Thinkless - the SaaS for students",
+  title = "Thinkless",
   description = "Thinkless is an open-source software to make chatting to your PDF files easy.",
   image = "/thumbnail.png",
   icons = "/favicon.ico",
@@ -39,13 +39,6 @@ export function constructMetadata({
           url: image
         }
       ]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-      creator: "@joshtriedcoding"
     },
     icons,
     metadataBase: new URL('https://thinkless-jet.vercel.app'),
