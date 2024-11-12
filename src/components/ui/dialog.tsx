@@ -11,8 +11,10 @@ const DialogTrigger = DialogPrimitive.Trigger;
 const DialogPortal = ({
   className,
   ...props
-}: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal className={cn(className)} {...props} />
+}: DialogPrimitive.DialogPortalProps & { className?: string }) => (
+  <div className={cn(className)}>
+    <DialogPrimitive.Portal {...props} />
+  </div>
 );
 DialogPortal.displayName = DialogPrimitive.Portal.displayName;
 
@@ -45,7 +47,6 @@ const DialogContent = React.forwardRef<
       )}
       {...props}
     >
-      {/* Ensuring DialogTitle for Accessibility */}
       <DialogHeader>
         <DialogTitle>Accessible Dialog Title</DialogTitle>
         <DialogDescription>Provide a description here.</DialogDescription>
