@@ -9,7 +9,7 @@ import {
 import { ArrowRight } from 'lucide-react'
 import UserAccountNav from './UserAccountNav'
 import MobileNav from './MobileNav'
-
+import { ModeToggle } from '@/components/ModeToggle'
 const Navbar = () => {
   const { getUser } = getKindeServerSession()
   const user = getUser()
@@ -74,6 +74,7 @@ const Navbar = () => {
                 />
               </>
             )}
+            <ModeToggle/>
           </div>
         </div>
       </MaxWidthWrapper>

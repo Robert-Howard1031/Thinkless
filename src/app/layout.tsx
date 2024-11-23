@@ -3,7 +3,7 @@ import Providers from '@/components/Providers'
 import { cn, constructMetadata } from '@/lib/utils'
 import { Inter } from 'next/font/google'
 import './globals.css'
-
+import { ThemeProvider } from "@/components/theme-provider"
 import 'react-loading-skeleton/dist/skeleton.css'
 import 'simplebar-react/dist/simplebar.min.css'
 
@@ -26,9 +26,11 @@ export default function RootLayout({
             'min-h-screen font-sans antialiased grainy',
             inter.className
           )}>
+            <ThemeProvider>
           <Toaster />
           <Navbar />
           {children}
+          </ThemeProvider>
         </body>
       </Providers>
     </html>
